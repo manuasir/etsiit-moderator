@@ -26,7 +26,7 @@ module.exports = [
     '¿Cómo se puede saber si alguien es una bruja?',
     '¿Cual es el personaje de Bruce Willis en La jungla de cristal?',
     '¿Cómo se llama el compañero de John McLane en "La jungla de Cristal III:La venganza"?',
-    '¿Como se llamaba el fantasma verde de Los Cazafantasmas?'
+    '¿Como se llamaba el fantasma verde de Los Cazafantasmas?',
     '¿A qué estaban enganchados los extraterrestres de "Distrito 9"?',
 '¿Cómo se llama el barco de Russell Crowe en "Master and Commander"?',
 '¿Cómo se llama el malo de "El Mariachi" que siempre vestía de blanco?',
@@ -1026,7 +1026,5 @@ module.exports = [
 '¿Quién da voz a Jack en las canciones de "Pesadilla antes de Navidad"?',
 '¿Cómo se llamaba el extraterrestre amigo de Chris Peterson en "Búscate la Vida"?',
 '¿Cómo se llama el grito más famoso de la historia del cine?',
-'¿Quién compuso la banda sonora de "El Pelotón Chiflado?',
-
-    
+'¿Quién compuso la banda sonora de "El Pelotón Chiflado?'    
 ];
