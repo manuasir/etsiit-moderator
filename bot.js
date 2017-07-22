@@ -3,11 +3,12 @@ const config   = require('./config');
 const mongoose = require('mongoose');
 mongoose.connect('localhost/etsiit');
 
-const bot  = new TeleBot(config.TOKEN);
-const User = require('./models/user');
+const bot       = new TeleBot(config.TOKEN);
+const User      = require('./models/user');
+const preguntas = require('./preguntas');
 
 bot.on('text', (msg) => {
-    // Alguien ha hablado
+
 });
 
 bot.on(['/start', '/hello'], (msg) => {
@@ -24,7 +25,7 @@ bot.on(['newChatMembers'], async (msg) => {
         msg.reply.text('Ha entrado un nuevo miembro');
     } catch (err) {
         if (err.code === 11000) {
-            let u = await User.findOne({username: msg.new_chat_member.username});
+            let u     = await User.findOne({username: msg.new_chat_member.username});
             u.advices = 0;
             await u.save();
             msg.reply.text('Ha entrado un viejo miembro de nuevo');
@@ -46,6 +47,7 @@ bot.on(['/aviso'], async (msg) => {
             if (user.advices >= 3) {
                 await bot.kickChatMember(msg.chat.id, user.userId);
                 msg.reply.text(user.username + ' ha sido expulsado');
+                bot.sendVideo(msg.chat.id, 'https://media.giphy.com/media/jkKcgtQcrAvks/giphy.gif');
             } else {
                 msg.reply.text(user.username + ' tiene ' + user.advices + ' avisos');
             }
