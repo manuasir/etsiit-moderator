@@ -132,7 +132,7 @@ bot.on(['/aviso'], async (msg) => {
                 msg.reply.text(user.username + ' tiene ' + user.advices + ' avisos');
             }
         } else {
-            msg.reply.text('Usuario @' + user + ' no encontrado');
+            msg.reply.text('Usuario @' + user + ' no encontrado o bien nunca ha hablado');
         }
     } catch (err) {
         throw err;
