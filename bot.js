@@ -7,7 +7,7 @@ const bot  = new TeleBot(config.TOKEN);
 const User = require('./models/user');
 
 bot.on('text', (msg) => {
-    msg.reply.text(msg.text)
+    // Alguien ha hablado
 });
 
 bot.on(['/start', '/hello'], (msg) => {
