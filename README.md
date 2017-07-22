@@ -55,3 +55,7 @@ module.exports = {
 
 # Autor
 - Jesús Ángel González Novez ([@jesusgn90](https://github.com/jesusgn90))
+
+# Colaboraciones
+- Ernesto Serrano ([@erseco](https://github.com/erseco))
+  - Añadidas sobre 1000 preguntas para los nuevos miembros, gracias. 
