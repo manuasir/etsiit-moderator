@@ -16,6 +16,7 @@ bot.on('text', async (msg) => {
         if(!u){
             u = new User({username: msg.from.username, userId: msg.from.id});
             await u.save();
+            msg.reply.text('Usuario @' + msg.from.username + ' almacenado en base de datos, encantado.');
         }
         let palabras = msg.text.split(' ');
         for (let palabra of palabras) {
@@ -78,6 +79,9 @@ bot.on(['/start', '/hello'], (msg) => {
 
 bot.on(['newChatMembers'], async (msg) => {
     try {
+        if(msg.new_chat_member.username === 'etsiit_moderator_bot'){
+            return 0;
+        }
         let user = new User({
             username: msg.new_chat_member.username,
             userId  : msg.new_chat_member.id
