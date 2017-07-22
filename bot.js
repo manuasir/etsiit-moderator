@@ -7,6 +7,20 @@ const bot       = new TeleBot(config.TOKEN);
 const User      = require('./models/user');
 const preguntas = require('./preguntas');
 
+const getRandom = (arr, n) => {
+    let result = new Array(n),
+        len = arr.length,
+        taken = new Array(len);
+    if (n > len)
+        throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+        let x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len;
+    }
+    return result;
+};
+
 bot.on('text', (msg) => {
 
 });
@@ -23,6 +37,8 @@ bot.on(['newChatMembers'], async (msg) => {
         });
         await user.save();
         msg.reply.text('Ha entrado un nuevo miembro');
+        let array = getRandom(preguntas,3);
+        msg.reply.text(array[0] + '\n' + array[1] + '\n' + array[2]);
     } catch (err) {
         if (err.code === 11000) {
             let u     = await User.findOne({username: msg.new_chat_member.username});
