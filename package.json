@@ -1,0 +1,22 @@
+{
+  "name": "etsiit-moderator",
+  "version": "1.0.0",
+  "license": "GPL-3.0",
+  "description": "Bot para moderar el grupo de la ETSIIT-UGR",
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/jesusgn90/etsiit-moderator"
+  },
+  "author": "Jesús Ángel González Novez",
+  "scripts": {
+    "start": "node ./bot.js",
+    "test": "istanbul cover _mocha"
+  },
+  "dependencies": {
+    "telebot": "latest"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2"
+  }
+}
