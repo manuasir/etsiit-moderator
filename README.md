@@ -13,6 +13,7 @@ https://travis-ci.org/jesusgn90/etsiit-moderator)
 - `/aviso @username`
   - Incrementa en 1 el número de avisos de un miembro.
     - Si el número de avisos >= 3 lo expulsa del grupo.
+    - Se envía un gif de fuego.
   - Si el username no existe dice 'Usuario no encontrado'.
   - El username puede ser en formato @username o username sin @.
 
@@ -22,6 +23,7 @@ https://travis-ci.org/jesusgn90/etsiit-moderator)
   - Se lanza cuando entra un nuevo miembro.
     - Si el bot no lo tenía almacenado en base de datos, lo crea.
     - Si el bot lo tenía almacenado en base de datos, reinicia su contador de avisos a 0.
+    - Se emiten 3 preguntas aleatorias de las almacenadas.
 
 # Desarrolladores
 - Se require crear un fichero llamado `config.js` con el siguiente contenido:
