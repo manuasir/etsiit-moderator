@@ -28,7 +28,7 @@ bot.on('text', async (msg) => {
             await tmpP.save();
         }
         for (let palabra of palabras) {
-            if (prohibidas.includes(palabra)) {
+            if (prohibidas.includes(palabra.toLowerCase())) {
                 msg.reply.text('Ese lenguaje jovenzuelo...');
                 return 0;
             }
