@@ -8,6 +8,7 @@ const User       = require('./models/user');
 const preguntas  = require('./util/preguntas');
 const getRandom  = require('./util/get-random');
 const prohibidas = require('./util/palabras-prohibidas');
+const aburridas = require('./util/palabras-aburridas');
 const Palabra    = require('./models/palabras');
 
 bot.on('text', async (msg) => {
@@ -31,6 +32,22 @@ bot.on('text', async (msg) => {
         for (let palabra of palabras) {
             if (prohibidas.includes(palabra.toLowerCase())) {
                 msg.reply.text('Ese lenguaje jovenzuelo...');
+                return 0;
+            }
+        }
+        for (let palabra of palabras) {
+            if (aburridas.includes(palabra.toLowerCase())) {
+                msg.reply.text('Deje de hablar de ' + palabra.toLowerCase() + ' u os juro que usaré la espada.');
+                return 0;
+            }
+        }
+        for (let palabra of palabras) {
+            if (['informática','informatica','calendario','beca','becas','becario'].includes(palabra.toLowerCase())) {
+                msg.reply.text('Vuesa merced parece saber de lo que habla');
+                return 0;
+            }
+            if (['node','node.js','nodejs'].includes(palabra.toLowerCase())) {
+                msg.reply.text('Yo estoy hecho con Node.js!');
                 return 0;
             }
         }
