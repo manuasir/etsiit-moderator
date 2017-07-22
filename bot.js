@@ -21,13 +21,15 @@ bot.on('text', async (msg) => {
         }
         let palabras = msg.text.split(' ');
         for (let palabra of palabras) {
-            let tmpP = await Palabra.findOne({palabra: palabra});
-            if (tmpP) {
-                tmpP.amount++;
-            } else {
-                tmpP = new Palabra({palabra: palabra});
+            if(palabra.length >= 3 && !['que','qué','cómo','donde','cuando','cuándo'].includes(palabra)){
+                let tmpP = await Palabra.findOne({palabra: palabra});
+                if (tmpP) {
+                    tmpP.amount++;
+                } else {
+                    tmpP = new Palabra({palabra: palabra});
+                }
+                await tmpP.save();
             }
-            await tmpP.save();
         }
         for (let palabra of palabras) {
             if (prohibidas.includes(palabra.toLowerCase())) {
@@ -48,6 +50,10 @@ bot.on('text', async (msg) => {
             }
             if (['node','node.js','nodejs'].includes(palabra.toLowerCase())) {
                 msg.reply.text('Yo estoy hecho con Node.js!');
+                return 0;
+            }
+            if (['urbano','sevilla'].includes(palabra.toLowerCase())) {
+                msg.reply.text('La oscuridad se cierne sobre ' + palabra);
                 return 0;
             }
         }
