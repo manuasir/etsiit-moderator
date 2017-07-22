@@ -1,13 +1,44 @@
 # ETSIIT-MODERATOR
 
-Bot que usa Node.js y sirve para moderar el grupo de la ETSIIT de la UGR. Realmente se puede usar para moderar cualquier grupo.
+- Bot que usa Node.js y sirve para moderar el grupo de la ETSIIT de la UGR en Telegram.
+- Realmente se puede usar para moderar cualquier grupo.
 
-# To-Do
+# Comandos
 
-- Implementar modelos []
-- Implementar lógica que incremente el número de avisos de un usuario []
-- Implementar lógica que expulse automáticamente a un usuario []
-- Implementar tests unitarios []
+- `/start`, `/hello`
+  - Devuelve el mensaje 'Hola!'
+- `/aviso @username`
+  - Incrementa en 1 el número de avisos de un miembro.
+    - Si el número de avisos >= 3 lo expulsa del grupo.
+  - Si el username no existe dice 'Usuario no encontrado'.
+  - El username puede ser en formato @username o username sin @.
+
+# Eventos
+
+- `newChatMember`
+  - Se lanza cuando entra un nuevo miembro.
+    - Si el bot no lo tenía almacenado en base de datos, lo crea.
+    - Si el bot lo tenía almacenado en base de datos, reinicia su contador de avisos a 0.
+
+# Desarrolladores
+- Se require crear un fichero llamado `config.js` con el siguiente contenido:
+
+```js
+module.exports = {
+  TOKEN: 'tutokenaqui'
+};
+```
+
+- `npm install`
+- `npm start`
+
+# Entorno
+
+- Node.js >= 8.0.0
+- Mongodb
+
+# Test
+- `npm test`
 
 # Estilo de código
 - Usar siempre los estándares ES6/ES7
@@ -18,4 +49,4 @@ Bot que usa Node.js y sirve para moderar el grupo de la ETSIIT de la UGR. Realme
 - Realizar un fork y luego un pull request.
 
 # Autor
-- Jesús Ángel González Novez (@jesusgn90)
+- Jesús Ángel González Novez ([@jesusgn90](https://github.com/jesusgn90))
