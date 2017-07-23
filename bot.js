@@ -6,6 +6,7 @@ const preguntas        = require('./util/preguntas');
 const getRandom        = require('./util/get-random');
 const palabrasObject   = require('./util/palabras');
 const respuestasObject = require('./util/respuestas');
+const urls             = require('./util/urls');
 const Palabra          = require('./models/palabras');
 
 mongoose.connect('localhost/etsiit');
@@ -165,6 +166,15 @@ bot.on(['/aviso'], async (msg) => {
     } catch (err) {
         throw err;
     }
+});
+
+bot.on(['/normativa'], async (msg) => {
+    try {
+		msg.reply.text(urls.normativa);
+        return 0;
+    } catch (err) {
+        throw err;
+    } 
 });
 
 bot.start();
