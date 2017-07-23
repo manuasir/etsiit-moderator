@@ -29,7 +29,12 @@ module.exports = {
         'clase',
         'clases',
         'homeopatía',
-        'homeopatia'
+        'homeopatia',
+        'profesora',
+        'profesor',
+        'maestro',
+        'maestra',
+        'profe'
     ],
     sabias    : [
         'informática',
@@ -37,11 +42,13 @@ module.exports = {
         'calendario',
         'beca',
         'becas',
-        'becario'
+        'becario',
+        'hurtado'
     ],
     profesores: [
         'urbano',
-        'sevilla'
+        'sevilla',
+        'olga'
     ],
     node      : [
         'node',

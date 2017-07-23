@@ -1,15 +1,20 @@
-const TeleBot        = require('telebot');
-const config         = require('./config');
-const mongoose       = require('mongoose');
-const User           = require('./models/user');
-const preguntas      = require('./util/preguntas');
-const getRandom      = require('./util/get-random');
-const palabrasObject = require('./util/palabras');
-const Palabra        = require('./models/palabras');
+const TeleBot          = require('telebot');
+const config           = require('./config');
+const mongoose         = require('mongoose');
+const User             = require('./models/user');
+const preguntas        = require('./util/preguntas');
+const getRandom        = require('./util/get-random');
+const palabrasObject   = require('./util/palabras');
+const respuestasObject = require('./util/respuestas');
+const Palabra          = require('./models/palabras');
 
 mongoose.connect('localhost/etsiit');
 
 const bot = new TeleBot(config.TOKEN);
+
+bot.on('sticker', (msg) => {
+    msg.reply.text('Los stickers me hacen ver muchos caracteres en base64');
+});
 
 bot.on('text', async (msg) => {
     try {
@@ -33,23 +38,23 @@ bot.on('text', async (msg) => {
         }
         for (let palabra of palabras) {
             if (palabrasObject.prohibidas.includes(palabra.toLowerCase())) {
-                msg.reply.text('Ese lenguaje jovenzuelo...');
+                msg.reply.text(getRandom(respuestasObject.prohibidas,1)[0]);
                 return 0;
             }
         }
         for (let palabra of palabras) {
             if (palabrasObject.aburridas.includes(palabra.toLowerCase())) {
-                msg.reply.text('Deje de hablar de ' + palabra.toLowerCase() + ' u os juro que usaré la espada.');
+                msg.reply.text(getRandom(respuestasObject.aburridas,1)[0]);
                 return 0;
             }
         }
         for (let palabra of palabras) {
             if (palabrasObject.sabias.includes(palabra.toLowerCase())) {
-                msg.reply.text('Vuesa merced parece saber de lo que habla');
+                msg.reply.text(getRandom(respuestasObject.sabias,1)[0]);
                 return 0;
             }
             if (palabrasObject.node.includes(palabra.toLowerCase())) {
-                msg.reply.text('Yo estoy hecho con Node.js!');
+                msg.reply.text(getRandom(respuestasObject.node,1)[0]);
                 return 0;
             }
             if (palabrasObject.profesores.includes(palabra.toLowerCase())) {
