@@ -177,4 +177,22 @@ bot.on(['/normativa'], async (msg) => {
     } 
 });
 
+bot.on(['/examenes'], async (msg) => {
+    try {
+		msg.reply.text(urls.examenes);
+        return 0;
+    } catch (err) {
+        throw err;
+    } 
+});
+
+bot.on(['/delegacion'], async (msg) => {
+    try {
+		msg.reply.text(urls.delegacion);
+        return 0;
+    } catch (err) {
+        throw err;
+    } 
+});
+
 bot.start();
