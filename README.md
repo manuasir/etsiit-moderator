@@ -25,6 +25,13 @@ https://travis-ci.org/jesusgn90/etsiit-moderator)
     - Si el bot lo tenía almacenado en base de datos, reinicia su contador de avisos a 0.
     - Se emiten 3 preguntas aleatorias de las almacenadas.
 
+- `sticker`
+  - Si alguien manda un sticker, el bot da su opinión
+
+- `text`
+  - Si alguien escribe, y alguna palabra forma parte de las especiales, el bot
+  da su opinión.
+
 # Desarrolladores
 - Se require crear un fichero llamado `config.js` con el siguiente contenido:
 
