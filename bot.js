@@ -13,7 +13,7 @@ mongoose.connect('localhost/etsiit');
 const bot = new TeleBot(config.TOKEN);
 
 bot.on('sticker', (msg) => {
-    msg.reply.text('Los stickers me hacen ver muchos caracteres en base64');
+    msg.reply.text(getRandom(respuestasObject.stickers,1)[0]);
 });
 
 bot.on('text', async (msg) => {
