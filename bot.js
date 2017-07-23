@@ -169,22 +169,22 @@ bot.on(['/aviso'], async (msg) => {
     }
 });
 
-bot.on('/normativa', msg => {
+bot.on('/normativa', (msg) => {
 	msg.reply.text(urls.normativa);
     return 0; 
 });
 
-bot.on('/examenes', msg => {
+bot.on('/examenes', (msg) => {
 	msg.reply.text(urls.examenes);
     return 0; 
 });
 
-bot.on('/delegacion', msg => {
+bot.on('/delegacion', (msg) => {
 	msg.reply.text(urls.delegacion);
     return 0;
 });
 
-bot.on('/horarios', msg => {
+bot.on('/horarios', (msg) => {
 	msg.reply.text(urls.horarios);
     return 0;
 });
@@ -192,7 +192,7 @@ bot.on('/horarios', msg => {
 /*Comando para saber horarios de servicios de la ETSIIT
 	Uso : /horario <servicio>
 */
-bot.on('/horario', msg => {
+bot.on('/horario', (msg) => {
 	let servicio = msg.text.split(' ')[1];
 	servicio = servicio.toLowerCase()
 	if (servicio.includes('ayuda')){
