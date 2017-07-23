@@ -1,27 +1,27 @@
-const TeleBot  = require('telebot');
-const config   = require('./config');
-const mongoose = require('mongoose');
+const TeleBot        = require('telebot');
+const config         = require('./config');
+const mongoose       = require('mongoose');
+const User           = require('./models/user');
+const preguntas      = require('./util/preguntas');
+const getRandom      = require('./util/get-random');
+const palabrasObject = require('./util/palabras');
+const Palabra        = require('./models/palabras');
+
 mongoose.connect('localhost/etsiit');
 
-const bot        = new TeleBot(config.TOKEN);
-const User       = require('./models/user');
-const preguntas  = require('./util/preguntas');
-const getRandom  = require('./util/get-random');
-const prohibidas = require('./util/palabras-prohibidas');
-const aburridas = require('./util/palabras-aburridas');
-const Palabra    = require('./models/palabras');
+const bot = new TeleBot(config.TOKEN);
 
 bot.on('text', async (msg) => {
     try {
-        let u = await User.findOne({username:msg.from.username});
-        if(!u){
+        let u = await User.findOne({username: msg.from.username});
+        if (!u) {
             u = new User({username: msg.from.username, userId: msg.from.id});
             await u.save();
             msg.reply.text('Usuario @' + msg.from.username + ' almacenado en base de datos, encantado.');
         }
         let palabras = msg.text.split(' ');
         for (let palabra of palabras) {
-            if(palabra.length >= 3 && !['que','qué','cómo','donde','cuando','cuándo'].includes(palabra)){
+            if (palabra.length >= 3 && !['que', 'qué', 'cómo', 'donde', 'cuando', 'cuándo'].includes(palabra)) {
                 let tmpP = await Palabra.findOne({palabra: palabra});
                 if (tmpP) {
                     tmpP.amount++;
@@ -32,27 +32,27 @@ bot.on('text', async (msg) => {
             }
         }
         for (let palabra of palabras) {
-            if (prohibidas.includes(palabra.toLowerCase())) {
+            if (palabrasObject.prohibidas.includes(palabra.toLowerCase())) {
                 msg.reply.text('Ese lenguaje jovenzuelo...');
                 return 0;
             }
         }
         for (let palabra of palabras) {
-            if (aburridas.includes(palabra.toLowerCase())) {
+            if (palabrasObject.aburridas.includes(palabra.toLowerCase())) {
                 msg.reply.text('Deje de hablar de ' + palabra.toLowerCase() + ' u os juro que usaré la espada.');
                 return 0;
             }
         }
         for (let palabra of palabras) {
-            if (['informática','informatica','calendario','beca','becas','becario'].includes(palabra.toLowerCase())) {
+            if (palabrasObject.sabias.includes(palabra.toLowerCase())) {
                 msg.reply.text('Vuesa merced parece saber de lo que habla');
                 return 0;
             }
-            if (['node','node.js','nodejs'].includes(palabra.toLowerCase())) {
+            if (palabrasObject.node.includes(palabra.toLowerCase())) {
                 msg.reply.text('Yo estoy hecho con Node.js!');
                 return 0;
             }
-            if (['urbano','sevilla'].includes(palabra.toLowerCase())) {
+            if (palabrasObject.profesores.includes(palabra.toLowerCase())) {
                 msg.reply.text('La oscuridad se cierne sobre ' + palabra);
                 return 0;
             }
@@ -102,7 +102,7 @@ bot.on(['/start', '/hello'], (msg) => {
 
 bot.on(['newChatMembers'], async (msg) => {
     try {
-        if(msg.new_chat_member.username === 'etsiit_moderator_bot'){
+        if (msg.new_chat_member.username === 'etsiit_moderator_bot') {
             return 0;
         }
         let user = new User({
