@@ -6,6 +6,8 @@ const preguntas        = require('./util/preguntas');
 const getRandom        = require('./util/get-random');
 const palabrasObject   = require('./util/palabras');
 const respuestasObject = require('./util/respuestas');
+const urls             = require('./util/urls');
+const servicios        = require('./util/servicios');
 const Palabra          = require('./models/palabras');
 
 mongoose.connect('localhost/etsiit');
@@ -165,6 +167,55 @@ bot.on(['/aviso'], async (msg) => {
     } catch (err) {
         throw err;
     }
+});
+
+bot.on('/normativa', (msg) => {
+	msg.reply.text(urls.normativa);
+    return 0; 
+});
+
+bot.on('/examenes', (msg) => {
+	msg.reply.text(urls.examenes);
+    return 0; 
+});
+
+bot.on('/delegacion', (msg) => {
+	msg.reply.text(urls.delegacion);
+    return 0;
+});
+
+bot.on('/horarios', (msg) => {
+	msg.reply.text(urls.horarios);
+    return 0;
+});
+
+/*Comando para saber horarios de servicios de la ETSIIT
+	Uso : /horario <servicio>
+*/
+bot.on('/horario', (msg) => {
+	let servicio = msg.text.split(' ')[1];
+	servicio = servicio.toLowerCase()
+	if (servicio.includes('ayuda')){
+		mensaje = 'Uso : /horario <servicio>\n \n Servicios disponibles:\n';
+		for (var i in servicios) {
+			if (servicios.hasOwnProperty(i)) {
+				mensaje += '  '+i + '\n';
+			}
+		}
+		mensaje += '  todos' + '\n';
+		msg.reply.text(mensaje);
+	} else if(servicio.includes('todos')){
+		mensaje = 'Horario de todos servicios disponibles:\n';
+		for (var i in servicios) {
+			mensaje +=servicios[i] + '\n';
+		}
+		msg.reply.text(mensaje);
+	} else if(typeof servicios[servicio] !== 'undefined'){
+		msg.reply.text(servicios[servicio]);
+	} else{
+        msg.reply.text('Servicio no encontrado. Use /horario ayuda');
+    }
+    return 0;
 });
 
 bot.start();
