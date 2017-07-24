@@ -65,4 +65,6 @@ module.exports = {
 
 # Colaboraciones
 - Ernesto Serrano ([@erseco](https://github.com/erseco))
-  - Añadidas sobre 1000 preguntas para los nuevos miembros, gracias. 
+  - Añadidas sobre 1000 preguntas para los nuevos miembros, gracias.
+- [@ado07](https://github.com/ado07)
+  - Añadidos comandos sobre horarios y links de la ETSIIT, gracias.
