@@ -5,7 +5,6 @@ const User             = require('./models/user');
 const preguntas        = require('./util/preguntas');
 const getRandom        = require('./util/get-random');
 const palabrasObject   = require('./util/palabras');
-const respuestasObject = require('./util/respuestas');
 const urls             = require('./util/urls');
 const servicios        = require('./util/servicios');
 const Palabra          = require('./models/palabras');
@@ -14,17 +13,13 @@ mongoose.connect('localhost/etsiit');
 
 const bot = new TeleBot(config.TOKEN);
 
-bot.on('sticker', (msg) => {
-    msg.reply.text(getRandom(respuestasObject.stickers, 1)[0]);
-});
-
 bot.on('text', async (msg) => {
     try {
         let u = await User.findOne({username: msg.from.username});
         if (!u) {
             u = new User({username: msg.from.username, userId: msg.from.id});
             await u.save();
-            msg.reply.text('Usuario @' + msg.from.username + ' almacenado en base de datos, encantado.');
+            //msg.reply.text('Usuario @' + msg.from.username + ' almacenado en base de datos, encantado.');
         }
         let palabras = msg.text.split(' ');
         for (let palabra of palabras) {
@@ -40,27 +35,7 @@ bot.on('text', async (msg) => {
         }
         for (let palabra of palabras) {
             if (palabrasObject.prohibidas.includes(palabra.toLowerCase())) {
-                msg.reply.text(getRandom(respuestasObject.prohibidas, 1)[0]);
-                return 0;
-            }
-        }
-        for (let palabra of palabras) {
-            if (palabrasObject.aburridas.includes(palabra.toLowerCase())) {
-                msg.reply.text(getRandom(respuestasObject.aburridas, 1)[0]);
-                return 0;
-            }
-        }
-        for (let palabra of palabras) {
-            if (palabrasObject.sabias.includes(palabra.toLowerCase())) {
-                msg.reply.text(getRandom(respuestasObject.sabias, 1)[0]);
-                return 0;
-            }
-            if (palabrasObject.node.includes(palabra.toLowerCase())) {
-                msg.reply.text(getRandom(respuestasObject.node, 1)[0]);
-                return 0;
-            }
-            if (palabrasObject.profesores.includes(palabra.toLowerCase())) {
-                msg.reply.text('La oscuridad se cierne sobre ' + palabra);
+                msg.reply.text('Se tendrá en cuenta esa forma de hablar');
                 return 0;
             }
         }
