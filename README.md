@@ -6,31 +6,21 @@ https://travis-ci.org/jesusgn90/etsiit-moderator)
 - Bot que usa Node.js y sirve para moderar el grupo de la ETSIIT de la UGR en Telegram.
 - Realmente se puede usar para moderar cualquier grupo.
 
-# Comandos
+# Comandos a los que reacciona
 
 - `/start`, `/hello`
-  - Devuelve el mensaje 'Hola!'
 - `/aviso @username`
-  - Incrementa en 1 el número de avisos de un miembro.
-    - Si el número de avisos >= 3 lo expulsa del grupo.
-    - Se envía un gif de fuego.
-  - Si el username no existe dice 'Usuario no encontrado'.
-  - El username puede ser en formato @username o username sin @.
+- `/normativa`
+- `/ranking`
+- `/examenes`
+- `/delegacion`
+- `/horarios`
+- `/horario <servicio>`
 
-# Eventos
+# Eventos a los que reacciona
 
 - `newChatMember`
-  - Se lanza cuando entra un nuevo miembro.
-    - Si el bot no lo tenía almacenado en base de datos, lo crea.
-    - Si el bot lo tenía almacenado en base de datos, reinicia su contador de avisos a 0.
-    - Se emiten 3 preguntas aleatorias de las almacenadas.
-
-- `sticker`
-  - Si alguien manda un sticker, el bot da su opinión
-
 - `text`
-  - Si alguien escribe, y alguna palabra forma parte de las especiales, el bot
-  da su opinión.
 
 # Desarrolladores
 - Se require crear un fichero llamado `config.js` con el siguiente contenido:
