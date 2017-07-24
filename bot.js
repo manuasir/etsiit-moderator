@@ -15,7 +15,7 @@ mongoose.connect('localhost/etsiit');
 const bot = new TeleBot(config.TOKEN);
 
 bot.on('sticker', (msg) => {
-    msg.reply.text(getRandom(respuestasObject.stickers,1)[0]);
+    msg.reply.text(getRandom(respuestasObject.stickers, 1)[0]);
 });
 
 bot.on('text', async (msg) => {
@@ -40,23 +40,23 @@ bot.on('text', async (msg) => {
         }
         for (let palabra of palabras) {
             if (palabrasObject.prohibidas.includes(palabra.toLowerCase())) {
-                msg.reply.text(getRandom(respuestasObject.prohibidas,1)[0]);
+                msg.reply.text(getRandom(respuestasObject.prohibidas, 1)[0]);
                 return 0;
             }
         }
         for (let palabra of palabras) {
             if (palabrasObject.aburridas.includes(palabra.toLowerCase())) {
-                msg.reply.text(getRandom(respuestasObject.aburridas,1)[0]);
+                msg.reply.text(getRandom(respuestasObject.aburridas, 1)[0]);
                 return 0;
             }
         }
         for (let palabra of palabras) {
             if (palabrasObject.sabias.includes(palabra.toLowerCase())) {
-                msg.reply.text(getRandom(respuestasObject.sabias,1)[0]);
+                msg.reply.text(getRandom(respuestasObject.sabias, 1)[0]);
                 return 0;
             }
             if (palabrasObject.node.includes(palabra.toLowerCase())) {
-                msg.reply.text(getRandom(respuestasObject.node,1)[0]);
+                msg.reply.text(getRandom(respuestasObject.node, 1)[0]);
                 return 0;
             }
             if (palabrasObject.profesores.includes(palabra.toLowerCase())) {
@@ -170,51 +170,49 @@ bot.on(['/aviso'], async (msg) => {
 });
 
 bot.on('/normativa', (msg) => {
-	msg.reply.text(urls.normativa);
-    return 0; 
+    msg.reply.text(urls.normativa);
+    return 0;
 });
 
 bot.on('/examenes', (msg) => {
-	msg.reply.text(urls.examenes);
-    return 0; 
+    msg.reply.text(urls.examenes);
+    return 0;
 });
 
 bot.on('/delegacion', (msg) => {
-	msg.reply.text(urls.delegacion);
+    msg.reply.text(urls.delegacion);
     return 0;
 });
 
 bot.on('/horarios', (msg) => {
-	msg.reply.text(urls.horarios);
+    msg.reply.text(urls.horarios);
     return 0;
 });
 
 /*Comando para saber horarios de servicios de la ETSIIT
-	Uso : /horario <servicio>
-*/
+ Uso : /horario <servicio>
+ */
 bot.on('/horario', (msg) => {
-	let servicio = msg.text.split(' ')[1];
-	servicio = servicio.toLowerCase()
-	if (servicio.includes('ayuda')){
-		mensaje = 'Uso : /horario <servicio>\n \n Servicios disponibles:\n';
-		for (var i in servicios) {
-			if (servicios.hasOwnProperty(i)) {
-				mensaje += '  '+i + '\n';
-			}
-		}
-		mensaje += '  todos' + '\n';
-		msg.reply.text(mensaje);
-	} else if(servicio.includes('todos')){
-		mensaje = 'Horario de todos servicios disponibles:\n';
-		for (var i in servicios) {
-			mensaje +=servicios[i] + '\n';
-		}
-		msg.reply.text(mensaje);
-	} else if(typeof servicios[servicio] !== 'undefined'){
-		msg.reply.text(servicios[servicio]);
-	} else{
-        msg.reply.text('Servicio no encontrado. Use /horario ayuda');
+    let mensaje;
+    let servicio = msg.text.split(' ')[1].toLowerCase();
+    if (servicio.includes('ayuda')) {
+        mensaje = 'Uso : /horario <servicio>\n \n Servicios disponibles:\n';
+        for (let key in servicios) {
+            mensaje += '  ' + key + '\n';
+        }
+        mensaje += '  todos' + '\n';
+    } else if (servicio.includes('todos')) {
+        mensaje = 'Horario de todos servicios disponibles:\n';
+        for (let key in servicios) {
+            mensaje += servicios[key] + '\n';
+        }
+    } else if (typeof servicios[servicio] !== 'undefined') {
+        mensaje = servicios[servicio];
+    } else {
+        mensaje = 'Servicio no encontrado. Use /horario ayuda';
     }
+
+    msg.reply.text(mensaje);
     return 0;
 });
 
