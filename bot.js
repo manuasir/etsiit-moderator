@@ -10,6 +10,7 @@ const servicios        = require('./util/servicios');
 const Palabra          = require('./models/palabras');
 
 mongoose.connect('localhost/etsiit');
+mongoose.Promise = global.Promise;
 
 const bot = new TeleBot(config.TOKEN);
 
