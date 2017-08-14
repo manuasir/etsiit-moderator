@@ -24,7 +24,10 @@ bot.on('text', async (msg) => {
         }
         let palabras = msg.text.split(' ');
         for (let palabra of palabras) {
-            if (palabra.length >= 3 && !['que', 'qué', 'cómo', 'donde', 'cuando', 'cuándo'].includes(palabra)) {
+            if (palabra.length >= 3 && 
+                !['las','los','por','para',
+                  'que', 'qué', 'cómo', 'donde', 
+                  'cuando', 'cuándo'].includes(palabra)) {
                 let tmpP = await Palabra.findOne({palabra: palabra});
                 if (tmpP) {
                     tmpP.amount++;
