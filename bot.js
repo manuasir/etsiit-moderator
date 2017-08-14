@@ -24,7 +24,7 @@ bot.on('text', async (msg) => {
         }
         let palabras = msg.text.split(' ');
         for (let palabra of palabras) {
-            if (palabra.length >= 3 && 
+            if (!(palabra.includes('/')) && palabra.length >= 3 && 
                 !['con','mas','eso','esto','del','las','los','por','para',
                   'que', 'qué', 'cómo', 'donde', 
                   'cuando', 'cuándo'].includes(palabra)) {
