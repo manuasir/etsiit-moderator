@@ -9,7 +9,7 @@ const urls             = require('./util/urls');
 const servicios        = require('./util/servicios');
 const Palabra          = require('./models/palabras');
 
-mongoose.connect('localhost/etsiit');
+mongoose.connect('localhost/etsiit',{useMongoClient:true});
 
 const bot = new TeleBot(config.TOKEN);
 
@@ -41,6 +41,30 @@ bot.on('text', async (msg) => {
         }
         return 0;
     } catch (err) {
+        throw err;
+    }
+});
+
+bot.on(['/status'], async (msg) => {
+    try {
+        let admins         = await bot.getChatAdministrators(msg.chat.id);
+        let adminUsernames = [];
+        for (let admin of admins.result) {
+            adminUsernames.push(admin.user.username);
+        }
+        if (!adminUsernames.includes(msg.from.username)) {
+            msg.reply.text('No eres administrador');
+            return 0;
+        }
+        let usuarios = await User.find({advices:{$ne:0}});
+        let str = '';
+        if(usuarios){
+            for(let usuario of usuarios){
+                str = str + (usuario.username + ' - ' + username.advices + '\n');
+            }
+        }
+        msg.reply.text(str);
+    }catch(err){
         throw err;
     }
 });

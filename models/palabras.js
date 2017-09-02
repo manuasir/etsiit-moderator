@@ -1,7 +1,5 @@
 const mongoose   = require('mongoose');
 const Schema     = mongoose.Schema;
-const Q          = require('q');
-mongoose.Promise = Q.Promise;
 
 let userSchema = new Schema({
     palabra: {
