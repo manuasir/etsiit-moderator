@@ -190,6 +190,38 @@ bot.on(['/aviso'], async (msg) => {
     }
 });
 
+bot.on(['/perdona'], async (msg) => {
+    try {
+        let admins         = await bot.getChatAdministrators(msg.chat.id);
+        let adminUsernames = [];
+        for (let admin of admins.result) {
+            adminUsernames.push(admin.user.username);
+        }
+        if (!adminUsernames.includes(msg.from.username)) {
+            msg.reply.text('No eres administrador');
+            return 0;
+        }
+        let user = msg.text.split(' ')[1];
+        if (typeof user === 'undefined') {
+            msg.reply.text('Necesito un usuario');
+            return 0;
+        }
+        if (user.includes('@')) user = user.split('@')[1];
+        let u = await User.findOne({username: user});
+        if (u) {
+            user = u;
+            user.advices--;
+            if(user.advices < 0) user.advices = 0;
+            await user.save();
+            msg.reply.text('Has sido perdonado de tus ofensas: ' + user.username + ' tiene ahora ' + user.advices + ' avisos');
+        } else {
+            msg.reply.text('Usuario @' + user + ' no encontrado o bien nunca ha hablado');
+        }
+    } catch (err) {
+        throw err;
+    }
+});
+
 bot.on('/normativa', (msg) => {
     msg.reply.text(urls.normativa);
     return 0;
