@@ -97,6 +97,24 @@ bot.on(['/status'], async (msg) => {
     }
 });
 
+bot.on(['/badguys'], async (msg) => {
+    try {
+        let guys = await User.find({$or:[{advices:1},{advices:2}]}).sort('-advices').exec();
+        let str = '';
+        if (guys.length > 0) {
+            for(let guy of guys){
+                str += `@${guy.username} - ${guy.advices} \n`;
+            }
+        } else {
+            str = 'Este es un grupo ejemplar';
+        }
+        msg.reply.text(str);
+        return 0;
+    } catch (err) {
+        throw err;
+    }
+});
+
 bot.on(['/ranking'], async (msg) => {
     try {
         let palabras = await Palabra.find({}).sort('-amount').exec();
