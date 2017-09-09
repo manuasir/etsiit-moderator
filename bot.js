@@ -73,30 +73,6 @@ bot.on('text', async (msg) => {
     }
 });
 
-bot.on(['/status'], async (msg) => {
-    try {
-        let admins         = await bot.getChatAdministrators(msg.chat.id);
-        let adminUsernames = [];
-        for (let admin of admins.result) {
-            adminUsernames.push(admin.user.username);
-        }
-        if (!adminUsernames.includes(msg.from.username)) {
-            msg.reply.text('No eres administrador');
-            return 0;
-        }
-        let usuarios = await User.find({advices:{$ne:0}});
-        let str = '';
-        if(usuarios){
-            for(let usuario of usuarios){
-                str = str + (usuario.username + ' - ' + username.advices + '\n');
-            }
-        }
-        msg.reply.text(str);
-    }catch(err){
-        throw err;
-    }
-});
-
 bot.on(['/badguys'], async (msg) => {
     try {
         let guys = await User.find({$or:[{advices:1},{advices:2}]}).sort('-advices').exec();
