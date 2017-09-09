@@ -1,5 +1,5 @@
 const TeleBot          = require('telebot');
-const config           = require('./config');
+const {TOKEN}          = require('./config');
 const mongoose         = require('mongoose');
 const User             = require('./models/user');
 const preguntas        = require('./util/preguntas');
@@ -9,19 +9,29 @@ const urls             = require('./util/urls');
 const servicios        = require('./util/servicios');
 const Palabra          = require('./models/palabras');
 
-mongoose.connect('localhost/etsiit',{useMongoClient:true});
+mongoose.connect('mongodb://localhost/etsiit',{useMongoClient:true});
+mongoose.Promise = global.Promise;
 
-const bot = new TeleBot(config.TOKEN);
+const bot = new TeleBot(TOKEN);
 
-bot.on('text', async (msg) => {
-    try {
+const checkUser = async (msg) => {
+    try{
         let u = await User.findOne({username: msg.from.username});
+
         if (!u) {
             u = new User({username: msg.from.username, userId: msg.from.id});
             await u.save();
-            //msg.reply.text('Usuario @' + msg.from.username + ' almacenado en base de datos, encantado.');
         }
-        let palabras = msg.text.split(' ');
+
+        return 0;
+    } catch(err){
+        throw err;
+    }
+};
+
+const updateWords = async (palabras,msg) => {
+    try{
+
         for (let palabra of palabras) {
             if (palabra.length >= 3 && !['que', 'qué', 'cómo', 'donde', 'cuando', 'cuándo'].includes(palabra)) {
                 let tmpP = await Palabra.findOne({palabra: palabra});
@@ -33,12 +43,26 @@ bot.on('text', async (msg) => {
                 await tmpP.save();
             }
         }
+        return 0;
+    }catch(err){
+        throw err;
+    }
+}
+
+bot.on('text', async (msg) => {
+    try {
+        let palabras = msg.text.split(' ');
+
+        await checkUser(msg);
+        await updateWords(palabras,msg);
+
         for (let palabra of palabras) {
             if (palabrasObject.prohibidas.includes(palabra.toLowerCase())) {
                 msg.reply.text('Se tendrá en cuenta esa forma de hablar');
-                return 0;
+                break;
             }
         }
+
         return 0;
     } catch (err) {
         throw err;
