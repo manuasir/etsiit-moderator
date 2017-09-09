@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "mongoose": "^4.11.10",
-    "telebot": "^1.2.3",
     "telebot": "latest"
   },
   "devDependencies": {
