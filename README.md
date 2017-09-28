@@ -16,6 +16,7 @@ https://travis-ci.org/jesusgn90/etsiit-moderator)
 - `/delegacion`
 - `/horarios`
 - `/horario <servicio>`
+- `/badguys`
 
 # Eventos a los que reacciona
 
