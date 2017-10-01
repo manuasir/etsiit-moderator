@@ -55,7 +55,5 @@ module.exports = {
 - Jesús Ángel González Novez ([@jesusgn90](https://github.com/jesusgn90))
 
 # Colaboraciones
-- Ernesto Serrano ([@erseco](https://github.com/erseco))
-  - Añadidas sobre 1000 preguntas para los nuevos miembros, gracias.
-- [@ado07](https://github.com/ado07)
-  - Añadidos comandos sobre horarios y links de la ETSIIT, gracias.
+  - Añadidas sobre 1000 preguntas para los nuevos miembros [@erseco](https://github.com/erseco)
+  - Añadidos comandos sobre horarios y links de la ETSIIT [@ado07](https://github.com/ado07)
