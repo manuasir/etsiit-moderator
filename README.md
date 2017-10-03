@@ -6,17 +6,10 @@ https://travis-ci.org/jesusgn90/etsiit-moderator)
 - Bot que usa Node.js y sirve para moderar el grupo de la ETSIIT de la UGR en Telegram.
 - Realmente se puede usar para moderar cualquier grupo.
 
-# ~~Comandos a los que reacciona~~ necesario actualizar
+# TO-DO `(IMPORTANTE)`
 
-- `/start`, `/hello`
-- `/aviso @username`
-- `/normativa`
-- `/ranking`
-- `/examenes`
-- `/delegacion`
-- `/horarios`
-- `/horario <servicio>`
-- `/badguys`
+- Implementar todos los test unitarios usando MOCHA & CHAI
+- Redactar el CONTRIBUTING.md
 
 # Eventos a los que reacciona
 
