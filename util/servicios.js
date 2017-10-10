@@ -1,4 +1,3 @@
-/*Añadir el servicio a la lista de servicios y despues especificar su horario*/
 module.exports = {
     etsiit    : 'El horario de funcionamiento de la ETSIIT es de 8:00 a 22:00',
     secretaria: 'El horario de secretaría es de 9:00 a 14:00',

@@ -1,4 +1,9 @@
-module.exports = (arr, n) => {
+/**
+ * Obtiene n elementos aleatorios de un array con tamaño <= n
+ * @param {array} arr Array con los elementos.
+ * @param {number} n Número de elementos a obtener del array.
+ */
+const run = (arr, n) => {
     let result = new Array(n);
     let len    = arr.length;
     let taken  = new Array(len);
@@ -15,3 +20,4 @@ module.exports = (arr, n) => {
     
     return result;
 };
+module.exports = run;
