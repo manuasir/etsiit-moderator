@@ -78,5 +78,9 @@ module.exports = {
         'Me quedé sin batería, aunque para eso mejor ni lo leo',
         'Que asco de stickers',
         'Te mola la uni? oh que guay'
+    ],
+    oscuridad: [
+        'Urbano',
+        'Sevilla'
     ]
 };
