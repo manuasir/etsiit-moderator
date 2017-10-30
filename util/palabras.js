@@ -28,5 +28,12 @@ module.exports = {
         'cat',
         'mosso',
         'mossos'
+    ],
+    perdon: [
+        'perdón',
+        'perdon',
+        'perdonar',
+        'perdona',
+        'perdonáme'
     ]
 };
