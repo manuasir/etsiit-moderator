@@ -13,5 +13,20 @@ module.exports = {
         'imbécil',
         'fuck',
         'fucking'
+    ],
+    izquierda: [
+        'república',
+        'republic',
+        'republica',
+        'psoe',
+        'podemos',
+        'puidgemont',
+        'catalunya',
+        'cataluña',
+        'independencia',
+        'pdcat',
+        'cat',
+        'mosso',
+        'mossos'
     ]
 };
