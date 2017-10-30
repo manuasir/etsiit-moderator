@@ -35,5 +35,17 @@ module.exports = {
         'perdonar',
         'perdona',
         'perdonáme'
+    ],
+    zelopec: [
+        'Cállate',
+        'Te odio',
+        'Deja de molestar',
+        'Sal de este grupo',
+        'No te cansas?',
+        'Suck my dick!',
+        'AssHole',
+        'Dick Sucker!',
+        'Zelopec madafakerrrrrr',
+        'Do you like my ass?'
     ]
 };
