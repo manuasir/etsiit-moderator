@@ -80,7 +80,7 @@ module.exports = {
         'Te mola la uni? oh que guay'
     ],
     oscuridad: [
-        'Urbano',
-        'Sevilla'
+        'urbano',
+        'sevilla'
     ]
 };
