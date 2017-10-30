@@ -66,6 +66,13 @@ module.exports = {
         'Os mataré por Santiago y por España',
         'Cuando to era campo...',
         'No habéis pasado el hambre jóvenes...',
-        'Rebentaras ahí esgraciaaaos'
+        'Rebentaras ahí esgraciaaaos',
+        'Normalmente no suelo hablar con gente tan ignorante',
+        'Frecuento bares de copas en Canadá',
+        'Te acuerdas? que bien lo pasamos!',
+        'Conozco a un tipo que podría ayudarte',
+        'Me vendes tu casa?',
+        'Eso no le interesa ni a Matías Prats',
+        'De verdad?? es broma, no me interesa'
     ]
 };
