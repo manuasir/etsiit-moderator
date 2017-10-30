@@ -73,6 +73,10 @@ module.exports = {
         'Conozco a un tipo que podría ayudarte',
         'Me vendes tu casa?',
         'Eso no le interesa ni a Matías Prats',
-        'De verdad?? es broma, no me interesa'
+        'De verdad?? es broma, no me interesa',
+        'Perdona estaba cagando',
+        'Me quedé sin batería, aunque para eso mejor ni lo leo',
+        'Que asco de stickers',
+        'Te mola la uni? oh que guay'
     ]
 };
