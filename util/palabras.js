@@ -47,5 +47,25 @@ module.exports = {
         'Dick Sucker!',
         'Zelopec madafakerrrrrr',
         'Do you like my ass?'
+    ],
+    own: [
+        'No me parece muy católico',
+        'De verdad opinas eso?',
+        'What fuck did you say to me?',
+        'Realmente creo que eso es incorrecto',
+        'Por favor... no y no',
+        'Visca Catalunya!',
+        'Andalucía libre!',
+        'Viva Franco!',
+        'Que débil me pareces',
+        'Realmente no tengo sentimientos',
+        'Soy un bot, no una persona, busca amigos',
+        'Creo que @Zelopec está interesado en el tema',
+        'Por favor revisa tus hábitos',
+        'Vuesa merced es despreciable',
+        'Os mataré por Santiago y por España',
+        'Cuando to era campo...',
+        'No habéis pasado el hambre jóvenes...',
+        'Rebentaras ahí esgraciaaaos'
     ]
 };
