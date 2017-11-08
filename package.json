@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "mongoose": "^4.11.10",
-    "ssus": "^1.0.1",
+    "ssus": "^1.0.2",
     "telebot": "^1.2.3"
   },
   "devDependencies": {
