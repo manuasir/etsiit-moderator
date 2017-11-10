@@ -7,6 +7,6 @@ describe('get-random.js',() => {
         const array  = [12,13,14,15,16];
         const random = getRandom(array,3);
         random.length.should.be.equal(3);
-        random.filter((e) => array.includes(e)).length.should.be.equal(3);
+        random.filter(e => array.includes(e)).length.should.be.equal(3);
     });
  });
