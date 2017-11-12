@@ -15,6 +15,9 @@ const userSchema = new Schema({
     advices : {
         type   : Number,
         default: 0
+    },
+    last_commands : {
+        type: [String]
     }
 });
 
